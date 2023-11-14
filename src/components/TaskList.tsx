@@ -1,6 +1,7 @@
 //Snippet
 //rfc
 import React, { useState } from "react";
+import TaskInput from "./TaskInput";
 
 interface Task {
   id: number;
@@ -27,7 +28,7 @@ export default function TaskList() {
     { id: 5, title: "Task 5", done: true },
   ]);
 
-  const addTask = () => {
+  const addTask = (newTaskTitle: string) => {
     // 🐞 taskList.push({ id: Math.random(), title: "Task New", done: false });
 
     //Method 1
@@ -51,10 +52,10 @@ export default function TaskList() {
       { id: Math.random(), title: newTaskTitle, done: false },
     ];
     setTaskList(newTaskList);
-    setNewTaskTitle("");
+    // setNewTaskTitle("");
   };
 
-  const [newTaskTitle, setNewTaskTitle] = useState("");
+  //   const [newTaskTitle, setNewTaskTitle] = useState("");
 
   const toggle = (task: Task) => {
     task.done = !task.done;
@@ -68,12 +69,13 @@ export default function TaskList() {
 
   return (
     <>
-      <input
+      {/* <input
         type="text"
         value={newTaskTitle}
         onChange={(e) => setNewTaskTitle(e.target.value)}
       />
-      <button onClick={addTask}>➕</button>
+      <button onClick={addTask}>➕</button> */}
+      <TaskInput addTask={addTask}></TaskInput>
       <ul>
         {taskList.map((t) => (
           <li key={t.id}>
