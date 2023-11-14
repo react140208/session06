@@ -42,13 +42,20 @@ export default function TaskList() {
     // newTaskList.push({ id: Math.random(), title: "Task New", done: false });
     const newTaskList = [
       ...taskList,
-      { id: Math.random(), title: "Task New", done: false },
+      { id: Math.random(), title: newTaskTitle, done: false },
     ];
     setTaskList(newTaskList);
   };
 
+  const [newTaskTitle, setNewTaskTitle] = useState("");
+
   return (
     <>
+      <input
+        type="text"
+        value={newTaskTitle}
+        onChange={(e) => setNewTaskTitle(e.target.value)}
+      />
       <button onClick={addTask}>➕</button>
       <ul>
         {taskList.map((t) => (
