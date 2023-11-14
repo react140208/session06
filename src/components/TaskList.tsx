@@ -79,6 +79,7 @@ export default function TaskList() {
               checked={t.done}
               onChange={() => toggle(t)}
             />
+            <button>❌</button>
           </li>
         ))}
       </ul>
