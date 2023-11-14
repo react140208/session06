@@ -45,6 +45,7 @@ export default function TaskList() {
       { id: Math.random(), title: newTaskTitle, done: false },
     ];
     setTaskList(newTaskList);
+    setNewTaskTitle("");
   };
 
   const [newTaskTitle, setNewTaskTitle] = useState("");
