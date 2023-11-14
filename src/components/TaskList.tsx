@@ -2,6 +2,12 @@
 //rfc
 import React, { useState } from "react";
 
+interface TasK {
+  id: number;
+  title: string;
+  done: boolean;
+}
+
 export default function TaskList() {
   //   //quiz 1
   //   const arr1 = [1, 2, 3];
@@ -13,7 +19,7 @@ export default function TaskList() {
   //   const add2 = (a: number, b: number) => a + b;
   //   console.log("quiz 2", add1 === add2);
 
-  const [taskList, setTaskList] = useState([
+  const [taskList, setTaskList] = useState<TasK[]>([
     { id: 1, title: "Task 1", done: true },
     { id: 2, title: "Task 2", done: true },
     { id: 3, title: "Task 3", done: false },
@@ -50,6 +56,10 @@ export default function TaskList() {
 
   const [newTaskTitle, setNewTaskTitle] = useState("");
 
+  const toggle = (task: TasK) => {
+    console.log("toggle", task);
+  };
+
   return (
     <>
       <input
@@ -61,7 +71,13 @@ export default function TaskList() {
       <ul>
         {taskList.map((t) => (
           <li key={t.id}>
-            {t.title} - {t.done ? "✅" : "🟩"}
+            {t.title}
+            {/* <input type="checkbox" checked={t.done} onChange={toggle} /> */}
+            <input
+              type="checkbox"
+              checked={t.done}
+              onChange={() => toggle(t)}
+            />
           </li>
         ))}
       </ul>
