@@ -2,7 +2,7 @@
 //rfc
 import React, { useState } from "react";
 
-interface TasK {
+interface Task {
   id: number;
   title: string;
   done: boolean;
@@ -19,7 +19,7 @@ export default function TaskList() {
   //   const add2 = (a: number, b: number) => a + b;
   //   console.log("quiz 2", add1 === add2);
 
-  const [taskList, setTaskList] = useState<TasK[]>([
+  const [taskList, setTaskList] = useState<Task[]>([
     { id: 1, title: "Task 1", done: true },
     { id: 2, title: "Task 2", done: true },
     { id: 3, title: "Task 3", done: false },
@@ -56,8 +56,9 @@ export default function TaskList() {
 
   const [newTaskTitle, setNewTaskTitle] = useState("");
 
-  const toggle = (task: TasK) => {
-    console.log("toggle", task);
+  const toggle = (task: Task) => {
+    task.done = !task.done;
+    setTaskList([...taskList]);
   };
 
   return (
