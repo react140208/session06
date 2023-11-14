@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 
 // TODO: 📝 Joda kardan taskInput
-export default function TaskInput({ addTask }: any) {
+
+interface Props {
+  addTask: (title: string) => void;
+}
+export default function TaskInput({ addTask }: Props) {
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const add = () => {
     addTask(newTaskTitle);
