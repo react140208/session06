@@ -3,6 +3,16 @@
 import React, { useState } from "react";
 
 export default function TaskList() {
+  //   //quiz 1
+  //   const arr1 = [1, 2, 3];
+  //   const arr2 = [1, 2, 3];
+  //   console.log("quiz 1", arr1 === arr2);
+
+  //   //quiz 2, lambda
+  //   const add1 = (a: number, b: number) => a + b;
+  //   const add2 = (a: number, b: number) => a + b;
+  //   console.log("quiz 2", add1 === add2);
+
   const [taskList, setTaskList] = useState([
     { id: 1, title: "Task 1", done: true },
     { id: 2, title: "Task 2", done: true },
