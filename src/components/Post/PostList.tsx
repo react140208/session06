@@ -11,7 +11,12 @@ import React, { useEffect, useState } from "react";
     
     Ant Design
 */
-
+interface Post {
+  id: number;
+  userId: number;
+  title: string;
+  body: string;
+}
 export default function PostList() {
   // useEffect(() => {}, [])
   //   useEffect(() => {
@@ -22,7 +27,7 @@ export default function PostList() {
   //       });
   //   }, []);
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Post[]>([]);
   useEffect(() => {
     fetch("https://jsonplaceholder.ir/posts")
       .then((resp) => resp.json())
@@ -48,7 +53,7 @@ export default function PostList() {
           </tr>
         </thead>
         <tbody>
-          {data.map((d: any) => (
+          {data.map((d) => (
             <tr>
               <th scope="row">{d.id}</th>
               <td>{d.userId}</td>
