@@ -2,12 +2,9 @@
 //rfc
 import React, { useState } from "react";
 import TaskInput from "./TaskInput";
+import { Task } from "./Task";
+import TaskItem from "./TaskItem";
 
-interface Task {
-  id: number;
-  title: string;
-  done: boolean;
-}
 //TODO: 📝 Rename task
 export default function TaskList() {
   //   //quiz 1
@@ -78,16 +75,22 @@ export default function TaskList() {
       <TaskInput addTask={addTask}></TaskInput>
       <ul>
         {taskList.map((t) => (
-          <li key={t.id}>
-            {t.title}
-            {/* <input type="checkbox" checked={t.done} onChange={toggle} /> */}
-            <input
-              type="checkbox"
-              checked={t.done}
-              onChange={() => toggle(t)}
-            />
-            <button onClick={() => remove(t.id)}>❌</button>
-          </li>
+          //   <li key={t.id}>
+          //     {t.title}
+          //     {/* <input type="checkbox" checked={t.done} onChange={toggle} /> */}
+          //     <input
+          //       type="checkbox"
+          //       checked={t.done}
+          //       onChange={() => toggle(t)}
+          //     />
+          //     <button onClick={() => remove(t.id)}>❌</button>
+          //   </li>
+          <TaskItem
+            key={t.id}
+            task={t}
+            remove={remove}
+            toggle={toggle}
+          ></TaskItem>
         ))}
       </ul>
     </>
