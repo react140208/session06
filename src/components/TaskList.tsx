@@ -61,6 +61,10 @@ export default function TaskList() {
     setTaskList([...taskList]);
   };
 
+  const remove = (id: number) => {
+    setTaskList(taskList.filter((t) => t.id !== id));
+  };
+
   return (
     <>
       <input
@@ -79,7 +83,7 @@ export default function TaskList() {
               checked={t.done}
               onChange={() => toggle(t)}
             />
-            <button>❌</button>
+            <button onClick={() => remove(t.id)}>❌</button>
           </li>
         ))}
       </ul>
