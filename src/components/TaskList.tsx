@@ -62,7 +62,8 @@ export default function TaskList() {
   };
 
   const remove = (id: number) => {
-    setTaskList(taskList.filter((t) => t.id !== id));
+    if (confirm("are you sure?"))
+      setTaskList(taskList.filter((t) => t.id !== id));
   };
 
   return (
