@@ -38,6 +38,7 @@ export default function PostList() {
   return (
     <>
       <h1>Post List {data.length}</h1>
+      <button className="btn btn-primary">OK</button>
       <ul>
         <li>...</li>
       </ul>
