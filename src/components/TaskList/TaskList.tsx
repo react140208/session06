@@ -1,9 +1,9 @@
 //Snippet
 //rfc
 import React, { useState } from "react";
-import TaskInput from "./TaskInput";
-import { Task } from "./Task";
-import TaskItem from "./TaskItem";
+import TaskInput from "../TaskList/TaskInput";
+import { Task } from "../TaskList/Task";
+import TaskItem from "../TaskList/TaskItem";
 
 //TODO: 📝 Rename task
 export default function TaskList() {
