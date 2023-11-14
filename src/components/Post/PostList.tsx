@@ -1,18 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 /*
     Ajax: 
         - $.ajax -> axios
         - fetch
         - xhr
+
+    CSS:
+       bootstrap
+    
+    Ant Design
 */
 
 export default function PostList() {
-  fetch("https://jsonplaceholder.ir/posts")
-    .then((resp) => resp.json())
-    .then((data) => {
-      console.log(data);
-    });
+  // useEffect(() => {}, [])
+  //   useEffect(() => {
+  //     fetch("https://jsonplaceholder.ir/posts")
+  //       .then((resp) => resp.json())
+  //       .then((data) => {
+  //         console.log(data);
+  //       });
+  //   }, []);
 
-  return <div>PostList</div>;
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch("https://jsonplaceholder.ir/posts")
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data);
+        setData(data);
+      });
+    return () => {
+      console.log("goodby! 👋");
+    };
+  }, []);
+
+  return (
+    <>
+      <h1>Post List {data.length}</h1>
+      <ul>
+        <li>...</li>
+      </ul>
+    </>
+  );
 }
