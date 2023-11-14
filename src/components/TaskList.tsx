@@ -7,7 +7,7 @@ interface Task {
   title: string;
   done: boolean;
 }
-
+//TODO: 📝 Rename task
 export default function TaskList() {
   //   //quiz 1
   //   const arr1 = [1, 2, 3];
