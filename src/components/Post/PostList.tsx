@@ -31,10 +31,11 @@ export default function PostList() {
   const [data, setData] = useState<Post[] | null>(null);
   const [total, setTotal] = useState(1);
   const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    fetch(`https://jsonplaceholder.ir/posts?_limit=10&_page=${page}`)
+    fetch(`https://jsonplaceholder.ir/posts?_limit=${pageSize}&_page=${page}`)
       .then((resp) => {
         const x = resp.headers.get("X-Total-Count") || "0";
         setTotal(+x);
@@ -48,7 +49,7 @@ export default function PostList() {
     return () => {
       console.log("goodby! 👋");
     };
-  }, [page]);
+  }, [page, pageSize]);
 
   // const pages = [];
   // for (let i = 1; i <= total / 10; i++) {
@@ -61,7 +62,7 @@ export default function PostList() {
   //   );
   // }
 
-  const columns: ColumnsType = [
+  const columns: ColumnsType<Post> = [
     {
       title: "Id",
       dataIndex: "id",
@@ -138,9 +139,17 @@ export default function PostList() {
           <Pagination
             defaultCurrent={1}
             total={total}
-            onChange={(page) => setPage(page)}
+            onChange={(page, pageSize) => {
+              setPage(page);
+              setPageSize(pageSize);
+            }}
           />
-          <Table columns={columns} dataSource={data} loading={loading} />
+          <Table
+            columns={columns}
+            dataSource={data}
+            loading={loading}
+            pagination={false}
+          />
         </>
       )}
     </>
