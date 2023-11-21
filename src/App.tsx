@@ -2,11 +2,13 @@ import { useState } from "react";
 import "./App.css";
 import PostIndex from "./pages/Post/PostIndex";
 import TaskList from "./components/TaskList/TaskList";
+import PhotoIndex from "./pages/Photo/PhotoIndex";
 
 function App() {
   const [toggle, setToggle] = useState(true);
   return (
     <>
+      <PhotoIndex></PhotoIndex>
       <button onClick={() => setToggle(!toggle)}>toggle</button>
       {toggle && <PostIndex></PostIndex>}
 
