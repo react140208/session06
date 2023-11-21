@@ -1,6 +1,6 @@
 //Snippet
 //rfc
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import TaskInput from "../TaskList/TaskInput";
 import { Task } from "../TaskList/Task";
 import TaskItem from "../TaskList/TaskItem";
@@ -16,6 +16,10 @@ export default function TaskList() {
   //   const add1 = (a: number, b: number) => a + b;
   //   const add2 = (a: number, b: number) => a + b;
   //   console.log("quiz 2", add1 === add2);
+
+  // if(1 === 1){
+  //   const [x, setX] = useState(true)
+  // }
 
   const [taskList, setTaskList] = useState<Task[]>([
     { id: 1, title: "Task 1", done: true },
@@ -54,15 +58,31 @@ export default function TaskList() {
 
   //   const [newTaskTitle, setNewTaskTitle] = useState("");
 
-  const toggle = (task: Task) => {
-    task.done = !task.done;
-    setTaskList([...taskList]);
-  };
+  // const toggle = (task: Task) => {
+  //   task.done = !task.done;
+  //   setTaskList([...taskList]);
+  // };
 
-  const remove = (id: number) => {
-    if (confirm("are you sure?"))
-      setTaskList(taskList.filter((t) => t.id !== id));
-  };
+  const toggle = useCallback(
+    (task: Task) => {
+      task.done = !task.done;
+      setTaskList([...taskList]);
+    },
+    [taskList]
+  );
+
+  // const remove = (id: number) => {
+  //   if (confirm("are you sure?"))
+  //     setTaskList(taskList.filter((t) => t.id !== id));
+  // };
+
+  const remove = useCallback(
+    (id: number) => {
+      if (confirm("are you sure?"))
+        setTaskList(taskList.filter((t) => t.id !== id));
+    },
+    [taskList]
+  );
 
   return (
     <>

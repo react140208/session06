@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Task } from "./Task";
 
 interface Props {
@@ -6,7 +6,7 @@ interface Props {
   remove: (id: number) => void;
   task: Task;
 }
-export default function TaskItem({ task, remove, toggle }: Props) {
+export function TaskItem({ task, remove, toggle }: Props) {
   return (
     <li>
       {task.title}
@@ -20,3 +20,5 @@ export default function TaskItem({ task, remove, toggle }: Props) {
     </li>
   );
 }
+
+export default memo(TaskItem);
