@@ -29,6 +29,7 @@ export default function PostIndex() {
     {
       title: "Image",
       dataIndex: "thumbnailUrl",
+      render: (thumbnailUrl: string) => <img src={thumbnailUrl} alt="" />,
     },
   ];
 
