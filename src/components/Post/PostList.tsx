@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "antd";
+import { Pagination, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
 /*
     Ajax: 
@@ -99,7 +99,7 @@ export default function PostList() {
               </a>
             </li> */}
             {/* {pages} */}
-            {new Array(total / 10).fill(0).map((x, i) => (
+            {/* {new Array(total / 10).fill(0).map((x, i) => (
               <li className={page === i ? "page-item active" : "page-item"}>
                 <a
                   className="page-link"
@@ -109,7 +109,7 @@ export default function PostList() {
                   {i + 1}
                 </a>
               </li>
-            ))}
+            ))} */}
           </ul>
 
           {/* <table className="table table-striped">
@@ -132,7 +132,11 @@ export default function PostList() {
               ))}
             </tbody>
           </table> */}
-
+          <Pagination
+            defaultCurrent={1}
+            total={total}
+            onChange={(page) => setPage(page)}
+          />
           <Table columns={columns} dataSource={data} />
         </>
       )}
