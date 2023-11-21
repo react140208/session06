@@ -1,5 +1,6 @@
-import React, { memo } from "react";
+import React, { memo, useContext } from "react";
 import { Task } from "./Task";
+import { AppContext } from "../../appContext";
 
 interface Props {
   toggle: (task: Task) => void;
@@ -7,9 +8,10 @@ interface Props {
   task: Task;
 }
 export function TaskItem({ task, remove, toggle }: Props) {
+  const { color } = useContext(AppContext);
   return (
     <li>
-      {task.title}
+      <span style={{ color }}>{task.title}</span>
       {/* <input type="checkbox" checked={t.done} onChange={toggle} /> */}
       <input
         type="checkbox"
