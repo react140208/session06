@@ -19,7 +19,7 @@ interface Post {
   title: string;
   body: string;
 }
-export default function PostList() {
+export default function PostIndex() {
   // useEffect(() => {}, [])
   //   useEffect(() => {
   //     fetch("https://jsonplaceholder.ir/posts")

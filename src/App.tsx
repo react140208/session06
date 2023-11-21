@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import PostList from "./components/Post/PostList";
+import PostIndex from "./pages/Post/PostIndex";
 import TaskList from "./components/TaskList/TaskList";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <button onClick={() => setToggle(!toggle)}>toggle</button>
-      {toggle && <PostList></PostList>}
+      {toggle && <PostIndex></PostIndex>}
 
       <h1>Task List</h1>
       <TaskList></TaskList>
