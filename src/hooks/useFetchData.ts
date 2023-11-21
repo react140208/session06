@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const useFetchData = <T>() => {
+export const useFetchData = <T>(endpoint: string) => {
   const [data, setData] = useState<T[] | null>(null);
   const [total, setTotal] = useState(1);
   const [page, setPage] = useState(1);
@@ -8,7 +8,9 @@ export const useFetchData = <T>() => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    fetch(`https://jsonplaceholder.ir/posts?_limit=${pageSize}&_page=${page}`)
+    fetch(
+      `https://jsonplaceholder.ir/${endpoint}?_limit=${pageSize}&_page=${page}`
+    )
       .then((resp) => {
         const x = resp.headers.get("X-Total-Count") || "0";
         setTotal(+x);
@@ -22,7 +24,7 @@ export const useFetchData = <T>() => {
     return () => {
       console.log("goodby! 👋");
     };
-  }, [page, pageSize]);
+  }, [endpoint, page, pageSize]);
 
   return {
     data,
