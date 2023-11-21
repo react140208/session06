@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-
+import { Table } from "antd";
+import { ColumnsType } from "antd/es/table";
 /*
     Ajax: 
         - $.ajax -> axios
@@ -57,6 +58,25 @@ export default function PostList() {
   //   );
   // }
 
+  const columns: ColumnsType = [
+    {
+      title: "Id",
+      dataIndex: "id",
+    },
+    {
+      title: "User Id",
+      dataIndex: "userId",
+    },
+    {
+      title: "Title",
+      dataIndex: "title",
+    },
+    {
+      title: "Body",
+      dataIndex: "body",
+    },
+  ];
+
   return (
     <>
       {!data && <h1>Loading...</h1>}
@@ -92,7 +112,7 @@ export default function PostList() {
             ))}
           </ul>
 
-          <table className="table table-striped">
+          {/* <table className="table table-striped">
             <thead>
               <tr>
                 <th scope="col">Id</th>
@@ -111,7 +131,9 @@ export default function PostList() {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table> */}
+
+          <Table columns={columns} dataSource={data} />
         </>
       )}
     </>
