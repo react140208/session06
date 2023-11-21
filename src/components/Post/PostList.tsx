@@ -31,7 +31,9 @@ export default function PostList() {
   const [data, setData] = useState<Post[] | null>(null);
   const [total, setTotal] = useState(1);
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
+    setLoading(true);
     fetch(`https://jsonplaceholder.ir/posts?_limit=10&_page=${page}`)
       .then((resp) => {
         const x = resp.headers.get("X-Total-Count") || "0";
@@ -41,6 +43,7 @@ export default function PostList() {
       .then((data) => {
         console.log(data);
         setData(data);
+        setLoading(false);
       });
     return () => {
       console.log("goodby! 👋");
@@ -137,7 +140,7 @@ export default function PostList() {
             total={total}
             onChange={(page) => setPage(page)}
           />
-          <Table columns={columns} dataSource={data} />
+          <Table columns={columns} dataSource={data} loading={loading} />
         </>
       )}
     </>
