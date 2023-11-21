@@ -46,16 +46,16 @@ export default function PostList() {
     };
   }, [page]);
 
-  const pages = [];
-  for (let i = 1; i <= total / 10; i++) {
-    pages.push(
-      <li className={page === i ? "page-item active" : "page-item"}>
-        <a className="page-link" href="#" onClick={() => setPage(i)}>
-          {i}
-        </a>
-      </li>
-    );
-  }
+  // const pages = [];
+  // for (let i = 1; i <= total / 10; i++) {
+  //   pages.push(
+  //     <li className={page === i ? "page-item active" : "page-item"}>
+  //       <a className="page-link" href="#" onClick={() => setPage(i)}>
+  //         {i}
+  //       </a>
+  //     </li>
+  //   );
+  // }
 
   return (
     <>
@@ -78,7 +78,18 @@ export default function PostList() {
                 3
               </a>
             </li> */}
-            {pages}
+            {/* {pages} */}
+            {new Array(total / 10).fill(0).map((x, i) => (
+              <li className={page === i ? "page-item active" : "page-item"}>
+                <a
+                  className="page-link"
+                  href="#"
+                  onClick={() => setPage(i + 1)}
+                >
+                  {i + 1}
+                </a>
+              </li>
+            ))}
           </ul>
 
           <table className="table table-striped">
