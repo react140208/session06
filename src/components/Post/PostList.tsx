@@ -31,7 +31,7 @@ export default function PostList() {
 
   //Hook, rect component va custom hook
 
-  const { data, loading, setPage, setPageSize, total } = useFetchData();
+  const { data, loading, setPage, setPageSize, total } = useFetchData<Post>();
   // const [data, setData] = useState<Post[] | null>(null);
   // const [total, setTotal] = useState(1);
   // const [page, setPage] = useState(1);

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
-export const useFetchData = () => {
-  const [data, setData] = useState<Post[] | null>(null);
+export const useFetchData = <T>() => {
+  const [data, setData] = useState<T[] | null>(null);
   const [total, setTotal] = useState(1);
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
