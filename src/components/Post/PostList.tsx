@@ -28,7 +28,7 @@ export default function PostList() {
   //   }, []);
 
   const [data, setData] = useState<Post[] | null>(null);
-  const [total, setTotal] = useState(0);
+  const [total, setTotal] = useState(1);
   const [page, setPage] = useState(1);
   useEffect(() => {
     fetch(`https://jsonplaceholder.ir/posts?_limit=10&_page=${page}`)
@@ -46,13 +46,24 @@ export default function PostList() {
     };
   }, [page]);
 
+  const pages = [];
+  for (let i = 1; i <= total / 10; i++) {
+    pages.push(
+      <li className={page === i ? "page-item active" : "page-item"}>
+        <a className="page-link" href="#" onClick={() => setPage(i)}>
+          {i}
+        </a>
+      </li>
+    );
+  }
+
   return (
     <>
       {!data && <h1>Loading...</h1>}
       {data && (
         <>
           <ul className="pagination">
-            <li className="page-item">
+            {/* <li className="page-item">
               <a className="page-link" href="#" onClick={() => setPage(1)}>
                 1
               </a>
@@ -66,7 +77,8 @@ export default function PostList() {
               <a className="page-link" href="#" onClick={() => setPage(3)}>
                 3
               </a>
-            </li>
+            </li> */}
+            {pages}
           </ul>
 
           <table className="table table-striped">
