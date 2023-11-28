@@ -10,6 +10,7 @@ const PhotoIndex = lazy(() => import("./pages/Photo/PhotoIndex"));
 const PostIndex = lazy(() => import("./pages/Post/PostIndex"));
 const ErrorPage = lazy(() => import("./pages/ErrorPage"));
 const TaskList = lazy(() => import("./components/TaskList/TaskList"));
+const CounterIndex = lazy(() => import("./pages/Counter/CounterIndex"));
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense>
             <PostIndex></PostIndex>
+          </Suspense>
+        ),
+      },
+      {
+        path: "counter",
+        element: (
+          <Suspense>
+            <CounterIndex></CounterIndex>
           </Suspense>
         ),
       },

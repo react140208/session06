@@ -32,6 +32,7 @@ const items: MenuItem[] = [
   getItem("Todo", "/todo", <DesktopOutlined />),
   getItem("Photo", "/photo", <UserOutlined />),
   getItem("Post", "/post", <UserOutlined />),
+  getItem("Counter", "/counter", <UserOutlined />),
 ];
 
 const AppLayout: React.FC = () => {
