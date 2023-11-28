@@ -8,6 +8,7 @@ import TodoIndex from "./pages/Todo/TodoIndex";
 import PhotoIndex from "./pages/Photo/PhotoIndex";
 import PostIndex from "./pages/Post/PostIndex";
 import ErrorPage from "./pages/ErrorPage";
+import { HelmetProvider } from "react-helmet-async";
 
 const router = createBrowserRouter([
   {
@@ -39,9 +40,11 @@ function App() {
   const [color, setColor] = useState("red");
   return (
     <div dir="rtl">
-      <AppContext.Provider value={{ color, setColor }}>
-        <RouterProvider router={router} />
-      </AppContext.Provider>
+      <HelmetProvider>
+        <AppContext.Provider value={{ color, setColor }}>
+          <RouterProvider router={router} />
+        </AppContext.Provider>
+      </HelmetProvider>
     </div>
   );
 }

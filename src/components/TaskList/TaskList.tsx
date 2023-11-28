@@ -4,6 +4,7 @@ import React, { useState, useCallback } from "react";
 import TaskInput from "../TaskList/TaskInput";
 import { Task } from "../TaskList/Task";
 import TaskItem from "../TaskList/TaskItem";
+import { Helmet } from "react-helmet-async";
 
 //TODO: 📝 Rename task
 export default function TaskList() {
@@ -92,6 +93,10 @@ export default function TaskList() {
         onChange={(e) => setNewTaskTitle(e.target.value)}
       />
       <button onClick={addTask}>➕</button> */}
+      <Helmet>
+        <title>Task List</title>
+        <meta name="description" content="Task List" />
+      </Helmet>
       <TaskInput addTask={addTask}></TaskInput>
       <ul>
         {taskList.map((t) => (
