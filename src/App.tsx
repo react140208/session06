@@ -7,11 +7,13 @@ import TaskList from "./components/TaskList/TaskList";
 import TodoIndex from "./pages/Todo/TodoIndex";
 import PhotoIndex from "./pages/Photo/PhotoIndex";
 import PostIndex from "./pages/Post/PostIndex";
+import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout></AppLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "task",
