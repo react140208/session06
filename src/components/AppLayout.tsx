@@ -5,7 +5,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Button, Layout, Menu, theme } from "antd";
+import { Badge, Button, Layout, Menu, Space, theme } from "antd";
 import SelectColor from "./SelectColor";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
@@ -65,9 +65,11 @@ const AppLayout: React.FC = () => {
       </Sider>
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer }}>
-          <SelectColor></SelectColor>
-          {counter}
-          <Button onClick={() => dispatch(reset())}>Reset</Button>
+          <Space>
+            <SelectColor></SelectColor>
+            <Badge count={counter} />
+            <Button onClick={() => dispatch(reset())}>Reset</Button>
+          </Space>
         </Header>
         <Content style={{ margin: "0 16px" }}>
           <Outlet />
