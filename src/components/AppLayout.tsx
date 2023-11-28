@@ -13,6 +13,7 @@ import PhotoIndex from "../pages/Photo/PhotoIndex";
 import PostIndex from "../pages/Post/PostIndex";
 import TodoIndex from "../pages/Todo/TodoIndex";
 import TaskList from "./TaskList/TaskList";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -33,18 +34,10 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-  getItem("Option 1", "1", <PieChartOutlined />),
-  getItem("Option 2", "2", <DesktopOutlined />),
-  getItem("User", "sub1", <UserOutlined />, [
-    getItem("Tom", "3"),
-    getItem("Bill", "4"),
-    getItem("Alex", "5"),
-  ]),
-  getItem("Team", "sub2", <TeamOutlined />, [
-    getItem("Team 1", "6"),
-    getItem("Team 2", "8"),
-  ]),
-  getItem("Files", "9", <FileOutlined />),
+  getItem("Task", "/task", <PieChartOutlined />),
+  getItem("Todo", "/todo", <DesktopOutlined />),
+  getItem("Photo", "/photo", <UserOutlined />),
+  getItem("Post", "/post", <UserOutlined />),
 ];
 
 const AppLayout: React.FC = () => {
@@ -55,6 +48,8 @@ const AppLayout: React.FC = () => {
   } = theme.useToken();
   const [toggle, setToggle] = useState(true);
 
+  const naigation = useNavigate();
+
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider
@@ -64,6 +59,7 @@ const AppLayout: React.FC = () => {
       >
         <div className="demo-logo-vertical" />
         <Menu
+          onClick={(e) => naigation(e.key)}
           theme="dark"
           defaultSelectedKeys={["1"]}
           mode="inline"
@@ -74,13 +70,14 @@ const AppLayout: React.FC = () => {
         <Header style={{ padding: 0, background: colorBgContainer }} />
         <Content style={{ margin: "0 16px" }}>
           <SelectColor></SelectColor>
-          <TaskList></TaskList>
+          {/* <TaskList></TaskList>
           <TodoIndex></TodoIndex>
           <PhotoIndex></PhotoIndex>
           <button onClick={() => setToggle(!toggle)}>toggle</button>
           {toggle && <PostIndex></PostIndex>}
 
-          <h1>Task List</h1>
+          <h1>Task List</h1> */}
+          <Outlet />
         </Content>
         <Footer style={{ textAlign: "center" }}>
           Ant Design ©2023 Created by Ant UED
