@@ -1,6 +1,7 @@
 import { Pagination, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
 import { useFetchData } from "../../hooks/useFetchData";
+import MetaHeader from "../../components/MetaHeader";
 
 interface Todo {
   id: number;
@@ -36,6 +37,7 @@ export default function TodoIndex() {
 
   return (
     <>
+      <MetaHeader title="Todo List"></MetaHeader>
       {data && (
         <>
           <Pagination

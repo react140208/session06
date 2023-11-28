@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Pagination, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
 import { useFetchData } from "../../hooks/useFetchData";
+import MetaHeader from "../../components/MetaHeader";
 /*
     Ajax: 
         - $.ajax -> axios
@@ -88,6 +89,7 @@ export default function PostIndex() {
 
   return (
     <>
+      <MetaHeader title="Post List"></MetaHeader>
       {!data && <h1>Loading...</h1>}
       {data && (
         <>

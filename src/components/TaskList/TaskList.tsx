@@ -1,10 +1,10 @@
 //Snippet
 //rfc
-import React, { useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import TaskInput from "../TaskList/TaskInput";
 import { Task } from "../TaskList/Task";
 import TaskItem from "../TaskList/TaskItem";
-import { Helmet } from "react-helmet-async";
+import MetaHeader from "../MetaHeader";
 
 //TODO: 📝 Rename task
 export default function TaskList() {
@@ -93,10 +93,7 @@ export default function TaskList() {
         onChange={(e) => setNewTaskTitle(e.target.value)}
       />
       <button onClick={addTask}>➕</button> */}
-      <Helmet>
-        <title>Task List</title>
-        <meta name="description" content="Task List" />
-      </Helmet>
+      <MetaHeader title="Task List" desc="my tasks"></MetaHeader>
       <TaskInput addTask={addTask}></TaskInput>
       <ul>
         {taskList.map((t) => (

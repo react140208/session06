@@ -1,6 +1,7 @@
 import { Pagination, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
 import { useFetchData } from "../../hooks/useFetchData";
+import MetaHeader from "../../components/MetaHeader";
 
 interface Photo {
   id: number;
@@ -35,6 +36,7 @@ export default function PostIndex() {
 
   return (
     <>
+      <MetaHeader title="Photo List"></MetaHeader>
       {data && (
         <>
           <Pagination
