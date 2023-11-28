@@ -5,9 +5,11 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Layout, Menu, theme } from "antd";
+import { Button, Layout, Menu, theme } from "antd";
 import SelectColor from "./SelectColor";
 import { Outlet, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { reset } from "../pages/Counter/Counter.slice";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -37,7 +39,8 @@ const items: MenuItem[] = [
 
 const AppLayout: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
-
+  const counter = useAppSelector((s) => s.counter.value);
+  const dispatch = useAppDispatch();
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -63,6 +66,8 @@ const AppLayout: React.FC = () => {
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer }}>
           <SelectColor></SelectColor>
+          {counter}
+          <Button onClick={() => dispatch(reset())}>Reset</Button>
         </Header>
         <Content style={{ margin: "0 16px" }}>
           <Outlet />
