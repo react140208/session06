@@ -20,7 +20,7 @@ const router = createBrowserRouter([
       {
         path: "task",
         element: (
-          <Suspense>
+          <Suspense fallback="...">
             <TaskList></TaskList>
           </Suspense>
         ),
