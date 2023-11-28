@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { Suspense, lazy, useState } from "react";
 import "./App.css";
 import { AppContext } from "./appContext";
 import AppLayout from "./components/AppLayout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import TaskList from "./components/TaskList/TaskList";
-import TodoIndex from "./pages/Todo/TodoIndex";
-import PhotoIndex from "./pages/Photo/PhotoIndex";
-import PostIndex from "./pages/Post/PostIndex";
-import ErrorPage from "./pages/ErrorPage";
 import { HelmetProvider } from "react-helmet-async";
+
+const TodoIndex = lazy(() => import("./pages/Todo/TodoIndex"));
+const PhotoIndex = lazy(() => import("./pages/Photo/PhotoIndex"));
+const PostIndex = lazy(() => import("./pages/Post/PostIndex"));
+const ErrorPage = lazy(() => import("./pages/ErrorPage"));
+const TaskList = lazy(() => import("./components/TaskList/TaskList"));
 
 const router = createBrowserRouter([
   {
@@ -18,19 +19,35 @@ const router = createBrowserRouter([
     children: [
       {
         path: "task",
-        element: <TaskList></TaskList>,
+        element: (
+          <Suspense>
+            <TaskList></TaskList>
+          </Suspense>
+        ),
       },
       {
         path: "todo",
-        element: <TodoIndex></TodoIndex>,
+        element: (
+          <Suspense>
+            <TodoIndex></TodoIndex>
+          </Suspense>
+        ),
       },
       {
         path: "photo",
-        element: <PhotoIndex></PhotoIndex>,
+        element: (
+          <Suspense>
+            <PhotoIndex></PhotoIndex>
+          </Suspense>
+        ),
       },
       {
         path: "post",
-        element: <PostIndex></PostIndex>,
+        element: (
+          <Suspense>
+            <PostIndex></PostIndex>
+          </Suspense>
+        ),
       },
     ],
   },
