@@ -30,6 +30,7 @@ export default function TaskList() {
     { id: 5, title: "Task 5", done: true },
   ]);
 
+  //Smart Component
   const addTask = (newTaskTitle: string) => {
     // 🐞 taskList.push({ id: Math.random(), title: "Task New", done: false });
 

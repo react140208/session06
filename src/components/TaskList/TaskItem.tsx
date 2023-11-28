@@ -7,6 +7,7 @@ interface Props {
   remove: (id: number) => void;
   task: Task;
 }
+// Dumb Component
 export function TaskItem({ task, remove, toggle }: Props) {
   const { color } = useContext(AppContext);
   return (
