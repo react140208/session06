@@ -80,9 +80,7 @@ const AppLayout: React.FC = () => {
           <h1>Task List</h1> */}
           <Outlet />
         </Content>
-        <Footer style={{ textAlign: "center" }}>
-          Ant Design ©2023 Created by Ant UED
-        </Footer>
+        <Footer style={{ textAlign: "center" }}>React 1402</Footer>
       </Layout>
     </Layout>
   );
