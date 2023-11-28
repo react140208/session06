@@ -67,9 +67,10 @@ const AppLayout: React.FC = () => {
         />
       </Sider>
       <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer }} />
-        <Content style={{ margin: "0 16px" }}>
+        <Header style={{ padding: 0, background: colorBgContainer }}>
           <SelectColor></SelectColor>
+        </Header>
+        <Content style={{ margin: "0 16px" }}>
           {/* <TaskList></TaskList>
           <TodoIndex></TodoIndex>
           <PhotoIndex></PhotoIndex>
