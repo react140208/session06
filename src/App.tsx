@@ -11,6 +11,7 @@ const PostIndex = lazy(() => import("./pages/Post/PostIndex"));
 const ErrorPage = lazy(() => import("./pages/ErrorPage"));
 const TaskList = lazy(() => import("./components/TaskList/TaskList"));
 const CounterIndex = lazy(() => import("./pages/Counter/CounterIndex"));
+const CounterZustand = lazy(() => import("./pages/Counter/CounterZustand"));
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 
@@ -57,6 +58,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense>
             <CounterIndex></CounterIndex>
+          </Suspense>
+        ),
+      },
+      {
+        path: "counter-zustand",
+        element: (
+          <Suspense>
+            <CounterZustand></CounterZustand>
           </Suspense>
         ),
       },

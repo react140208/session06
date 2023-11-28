@@ -35,6 +35,7 @@ const items: MenuItem[] = [
   getItem("Photo", "/photo", <UserOutlined />),
   getItem("Post", "/post", <UserOutlined />),
   getItem("Counter", "/counter", <UserOutlined />),
+  getItem("Counter Zustand", "/counter-zustand", <UserOutlined />),
 ];
 
 const AppLayout: React.FC = () => {
