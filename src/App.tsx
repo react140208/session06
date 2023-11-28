@@ -11,6 +11,8 @@ const PostIndex = lazy(() => import("./pages/Post/PostIndex"));
 const ErrorPage = lazy(() => import("./pages/ErrorPage"));
 const TaskList = lazy(() => import("./components/TaskList/TaskList"));
 const CounterIndex = lazy(() => import("./pages/Counter/CounterIndex"));
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 const router = createBrowserRouter([
   {
@@ -66,11 +68,13 @@ function App() {
   const [color, setColor] = useState("red");
   return (
     <div dir="rtl">
-      <HelmetProvider>
-        <AppContext.Provider value={{ color, setColor }}>
-          <RouterProvider router={router} />
-        </AppContext.Provider>
-      </HelmetProvider>
+      <Provider store={store}>
+        <HelmetProvider>
+          <AppContext.Provider value={{ color, setColor }}>
+            <RouterProvider router={router} />
+          </AppContext.Provider>
+        </HelmetProvider>
+      </Provider>
     </div>
   );
 }
