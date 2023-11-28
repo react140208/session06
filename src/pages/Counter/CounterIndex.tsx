@@ -15,9 +15,13 @@ export default function CounterIndex() {
   const dispatch = useAppDispatch();
   const [incBy, setIncBy] = useState(10);
   incrementByX({ value: 1, xyz: "abc" });
+
   return (
     <>
       <Title>{counter}</Title>
+      <Button onClick={() => dispatch({ type: "counter/increment" })}>
+        ➕
+      </Button>
       <Button onClick={() => dispatch(increment())}>➕</Button>
       <Button onClick={() => dispatch(decrement())}>➖</Button>
       <Button onClick={() => dispatch(reset())}>Reset</Button>
