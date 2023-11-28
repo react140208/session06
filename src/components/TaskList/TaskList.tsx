@@ -50,6 +50,8 @@ export default function TaskList() {
     //Method 3
     // const newTaskList = [...taskList]; //spread operator // es2015+
     // newTaskList.push({ id: Math.random(), title: "Task New", done: false });
+
+    //Method 4 -. immer
     const newTaskList = [
       ...taskList,
       { id: Math.random(), title: newTaskTitle, done: false },
