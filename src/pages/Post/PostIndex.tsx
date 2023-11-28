@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { Pagination, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
 import { useFetchData } from "../../hooks/useFetchData";

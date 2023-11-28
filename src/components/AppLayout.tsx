@@ -1,18 +1,12 @@
 import React, { useState } from "react";
 import {
   DesktopOutlined,
-  FileOutlined,
   PieChartOutlined,
-  TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
+import { Layout, Menu, theme } from "antd";
 import SelectColor from "./SelectColor";
-import PhotoIndex from "../pages/Photo/PhotoIndex";
-import PostIndex from "../pages/Post/PostIndex";
-import TodoIndex from "../pages/Todo/TodoIndex";
-import TaskList from "./TaskList/TaskList";
 import { Outlet, useNavigate } from "react-router-dom";
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -46,7 +40,6 @@ const AppLayout: React.FC = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-  const [toggle, setToggle] = useState(true);
 
   const naigation = useNavigate();
 
@@ -71,13 +64,6 @@ const AppLayout: React.FC = () => {
           <SelectColor></SelectColor>
         </Header>
         <Content style={{ margin: "0 16px" }}>
-          {/* <TaskList></TaskList>
-          <TodoIndex></TodoIndex>
-          <PhotoIndex></PhotoIndex>
-          <button onClick={() => setToggle(!toggle)}>toggle</button>
-          {toggle && <PostIndex></PostIndex>}
-
-          <h1>Task List</h1> */}
           <Outlet />
         </Content>
         <Footer style={{ textAlign: "center" }}>React 1402</Footer>
