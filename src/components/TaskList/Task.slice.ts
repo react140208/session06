@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Task } from "./Task";
 
 interface TaskListStore {
@@ -18,7 +18,23 @@ const initialState: TaskListStore = {
 const taskListSlice = createSlice({
   name: "taskList",
   initialState,
-  reducers: {},
+  reducers: {
+    add: (state, action: PayloadAction<string>) => {
+      state.taskList.push({
+        id: Math.random(),
+        title: action.payload,
+        done: false,
+      });
+    },
+    toggle: (state, action: PayloadAction<number>) => {
+      const task = state.taskList.find((x) => x.id === action.payload);
+      if (task) task.done = !task?.done;
+    },
+    remove: (state, action: PayloadAction<number>) => {
+      state.taskList = state.taskList.filter((x) => x.id !== action.payload);
+    },
+  },
 });
 
+export const { add, toggle, remove } = taskListSlice.actions;
 export default taskListSlice.reducer;

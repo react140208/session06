@@ -1,14 +1,14 @@
 import { useState } from "react";
+import { useAppDispatch } from "../../redux/hooks";
+import { add } from "./Task.slice";
 
 // TODO: 📝 Joda kardan taskInput
 
-interface Props {
-  addTask: (title: string) => void;
-}
-export default function TaskInput({ addTask }: Props) {
+export default function TaskInput() {
   const [newTaskTitle, setNewTaskTitle] = useState("");
-  const add = () => {
-    addTask(newTaskTitle);
+  const dispatch = useAppDispatch();
+  const addTask = () => {
+    dispatch(add(newTaskTitle));
     setNewTaskTitle("");
   };
   return (
@@ -18,7 +18,7 @@ export default function TaskInput({ addTask }: Props) {
         value={newTaskTitle}
         onChange={(e) => setNewTaskTitle(e.target.value)}
       />
-      <button onClick={add}>➕</button>
+      <button onClick={addTask}>➕</button>
     </>
   );
 }

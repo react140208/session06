@@ -1,14 +1,15 @@
 import { memo, useContext } from "react";
 import { Task } from "./Task";
 import { AppContext } from "../../appContext";
+import { useAppDispatch } from "../../redux/hooks";
+import { remove, toggle } from "./Task.slice";
 
 interface Props {
-  toggle: (task: Task) => void;
-  remove: (id: number) => void;
   task: Task;
 }
 // Dumb Component
-export function TaskItem({ task, remove, toggle }: Props) {
+export function TaskItem({ task }: Props) {
+  const dispatch = useAppDispatch();
   const { color } = useContext(AppContext);
   return (
     <li>
@@ -17,9 +18,15 @@ export function TaskItem({ task, remove, toggle }: Props) {
       <input
         type="checkbox"
         checked={task.done}
-        onChange={() => toggle(task)}
+        onChange={() => dispatch(toggle(task.id))}
       />
-      <button onClick={() => remove(task.id)}>❌</button>
+      <button
+        onClick={() =>
+          confirm("are you sure?") ? dispatch(remove(task.id)) : null
+        }
+      >
+        ❌
+      </button>
     </li>
   );
 }
