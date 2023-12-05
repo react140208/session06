@@ -4,7 +4,7 @@ import { Task } from "./Task";
 interface Store {
   taskList: Task[];
   add: (title: string) => void;
-  //   toggle: (id: number) => void;
+  toggle: (id: number) => void;
   remove: (id: number) => void;
 }
 
@@ -29,4 +29,11 @@ export const useTaskListStore = create<Store>()((set) => ({
     })),
   remove: (id: number) =>
     set((state) => ({ taskList: state.taskList.filter((x) => x.id !== id) })),
+  toggle: (id: number) =>
+    set((state) => {
+      const taskList = state.taskList.concat();
+      const task = taskList.find((x) => x.id == id);
+      if (task) task.done = !task.done;
+      return { taskList };
+    }),
 }));

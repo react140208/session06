@@ -8,7 +8,7 @@ interface Props {
 }
 // Dumb Component
 export function TaskItem({ task }: Props) {
-  const { remove } = useTaskListStore();
+  const { remove, toggle } = useTaskListStore();
   const { color } = useContext(AppContext);
   return (
     <li>
@@ -17,7 +17,7 @@ export function TaskItem({ task }: Props) {
       <input
         type="checkbox"
         checked={task.done}
-        onChange={() => remove(task.id)}
+        onChange={() => toggle(task.id)}
       />
       <button
         onClick={() => (confirm("are you sure?") ? remove(task.id) : null)}
