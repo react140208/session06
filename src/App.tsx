@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 
 const TodoIndex = lazy(() => import("./pages/Todo/TodoIndex"));
 const PhotoIndex = lazy(() => import("./pages/Photo/PhotoIndex"));
+const PhotoDetail = lazy(() => import("./pages/Photo/PhotoDetail"));
 const PostIndex = lazy(() => import("./pages/Post/PostIndex"));
 const ErrorPage = lazy(() => import("./pages/ErrorPage"));
 const TaskList = lazy(() => import("./components/TaskList/TaskList"));
@@ -51,6 +52,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense>
             <PhotoIndex></PhotoIndex>
+          </Suspense>
+        ),
+      },
+      {
+        path: "photo/:id",
+        element: (
+          <Suspense>
+            <PhotoDetail></PhotoDetail>
           </Suspense>
         ),
       },

@@ -2,6 +2,7 @@ import { Pagination, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
 import { useFetchData } from "../../hooks/useFetchData";
 import MetaHeader from "../../components/MetaHeader";
+import { Link } from "react-router-dom";
 
 interface Photo {
   id: number;
@@ -26,6 +27,9 @@ export default function PostIndex() {
     {
       title: "Title",
       dataIndex: "title",
+      render: (title: string, rec) => (
+        <Link to={"/photo/" + rec.id}>{title}</Link>
+      ),
     },
     {
       title: "Image",

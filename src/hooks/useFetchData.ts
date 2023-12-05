@@ -41,7 +41,7 @@ export const useFetchData = <T>(endpoint: string) => {
     (async () => {
       //Async/Await
       const resp = await fetch(
-        `https://jsonplaceholder.ir/${endpoint}?_limit=${pageSize}&_page=${page}`
+        `https://jsonplaceholder.typicode.com/${endpoint}?_limit=${pageSize}&_page=${page}`
       );
       const x = resp.headers.get("X-Total-Count") || "0";
       setTotal(+x);
