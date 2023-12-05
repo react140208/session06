@@ -64,7 +64,7 @@ const AppLayout: React.FC = () => {
       >
         <div className="demo-logo-vertical" />
         <Menu
-          onClick={(e) => naigation(e.key)}
+          onClick={(e) => navigate(e.key)}
           theme="dark"
           defaultSelectedKeys={["1"]}
           mode="inline"
