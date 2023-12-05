@@ -1,15 +1,16 @@
 import { Button, Form, Input } from "antd";
 import { useAppDispatch } from "../../redux/hooks";
+import { loginAction } from "./Auth.slice";
 
 export type LoginForm = {
-  username?: string;
-  password?: string;
+  email: string;
+  password: string;
 };
 
 export default function Login() {
   const dispatch = useAppDispatch();
   const onFinish = (values: LoginForm) => {
-    // dispatch();
+    dispatch(loginAction(values));
     console.log("Success:", values);
   };
 
@@ -25,11 +26,11 @@ export default function Login() {
         autoComplete="off"
       >
         <Form.Item<LoginForm>
-          label="Username"
-          name="username"
+          label="Email"
+          name="email"
           rules={[{ required: true, message: "Please input your username!" }]}
         >
-          <Input />
+          <Input type="email" />
         </Form.Item>
 
         <Form.Item<LoginForm>
