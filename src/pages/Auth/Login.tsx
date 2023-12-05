@@ -1,12 +1,15 @@
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
+import { useAppDispatch } from "../../redux/hooks";
 
-type FieldType = {
+export type LoginForm = {
   username?: string;
   password?: string;
 };
 
 export default function Login() {
-  const onFinish = (values: FieldType) => {
+  const dispatch = useAppDispatch();
+  const onFinish = (values: LoginForm) => {
+    // dispatch();
     console.log("Success:", values);
   };
 
@@ -21,7 +24,7 @@ export default function Login() {
         onFinish={onFinish}
         autoComplete="off"
       >
-        <Form.Item<FieldType>
+        <Form.Item<LoginForm>
           label="Username"
           name="username"
           rules={[{ required: true, message: "Please input your username!" }]}
@@ -29,7 +32,7 @@ export default function Login() {
           <Input />
         </Form.Item>
 
-        <Form.Item<FieldType>
+        <Form.Item<LoginForm>
           label="Password"
           name="password"
           rules={[{ required: true, message: "Please input your password!" }]}

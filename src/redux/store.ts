@@ -2,11 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import counterReducer from "../pages/Counter/Counter.slice";
 import TaskListReducer from "../components/TaskList/Task.slice";
+import authReducer from "../pages/Auth/Auth.slice";
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     taskList: TaskListReducer,
+    auth: authReducer,
   },
 });
 
