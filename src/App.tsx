@@ -10,6 +10,7 @@ const PhotoIndex = lazy(() => import("./pages/Photo/PhotoIndex"));
 const PostIndex = lazy(() => import("./pages/Post/PostIndex"));
 const ErrorPage = lazy(() => import("./pages/ErrorPage"));
 const TaskList = lazy(() => import("./components/TaskList/TaskList"));
+const TaskListZustand = lazy(() => import("./components/TaskListZ/TaskList"));
 const CounterIndex = lazy(() => import("./pages/Counter/CounterIndex"));
 const CounterZustand = lazy(() => import("./pages/Counter/CounterZustand"));
 import { Provider } from "react-redux";
@@ -26,6 +27,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback="...">
             <TaskList></TaskList>
+          </Suspense>
+        ),
+      },
+      {
+        path: "taskz",
+        element: (
+          <Suspense fallback="...">
+            <TaskListZustand></TaskListZustand>
           </Suspense>
         ),
       },
