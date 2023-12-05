@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   DesktopOutlined,
   PieChartOutlined,
@@ -42,12 +42,17 @@ const items: MenuItem[] = [
 const AppLayout: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
   const counter = useAppSelector((s) => s.counter.value);
+  const token = useAppSelector((s) => s.auth.token);
   const dispatch = useAppDispatch();
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  const naigation = useNavigate();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) navigate("/auth/login");
+  }, [navigate, token]);
 
   return (
     <Layout style={{ minHeight: "100vh" }}>

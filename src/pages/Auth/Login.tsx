@@ -1,6 +1,8 @@
 import { Button, Form, Input } from "antd";
-import { useAppDispatch } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { loginAction } from "./Auth.slice";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export type LoginForm = {
   email: string;
@@ -9,6 +11,12 @@ export type LoginForm = {
 
 export default function Login() {
   const dispatch = useAppDispatch();
+  const token = useAppSelector((s) => s.auth.token);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (token) navigate("/");
+  }, [navigate, token]);
+
   const onFinish = (values: LoginForm) => {
     dispatch(loginAction(values));
     console.log("Success:", values);
