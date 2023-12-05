@@ -11,7 +11,7 @@ interface Todo {
 }
 export default function TodoIndex() {
   const { data, loading, setPage, setPageSize, total } =
-    useFetchData<Todo>("todos");
+    useFetchData<Todo>("todo");
 
   const columns: ColumnsType<Todo> = [
     {

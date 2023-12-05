@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { appApi } from "../core/appApi";
 
 export const useFetchData = <T>(endpoint: string) => {
   const [data, setData] = useState<T[] | null>(null);
@@ -40,13 +41,12 @@ export const useFetchData = <T>(endpoint: string) => {
     //IIFE - Immediately Invoked Function Expression
     (async () => {
       //Async/Await
-      const resp = await fetch(
-        `https://jsonplaceholder.typicode.com/${endpoint}?_limit=${pageSize}&_page=${page}`
+      const resp = await appApi.get(
+        `${endpoint}?_limit=${pageSize}&_page=${page}`
       );
-      const x = resp.headers.get("X-Total-Count") || "0";
+      const x = resp.headers["X-Total-Count"] || "0";
       setTotal(+x);
-      const data = await resp.json();
-      setData(data);
+      setData(resp.data);
       setLoading(false);
     })();
 

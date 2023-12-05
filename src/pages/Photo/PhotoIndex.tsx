@@ -13,7 +13,7 @@ interface Photo {
 }
 export default function PostIndex() {
   const { data, loading, setPage, setPageSize, total } =
-    useFetchData<Photo>("photos");
+    useFetchData<Photo>("Advie");
 
   const columns: ColumnsType<Photo> = [
     {
@@ -21,14 +21,14 @@ export default function PostIndex() {
       dataIndex: "id",
     },
     {
-      title: "Album Id",
-      dataIndex: "albumId",
+      title: "Tozih",
+      dataIndex: "Tozih",
     },
     {
-      title: "Title",
-      dataIndex: "title",
-      render: (title: string, rec) => (
-        <Link to={"/photo/" + rec.id}>{title}</Link>
+      title: "khavas",
+      dataIndex: "khavas",
+      render: (khavas: string, rec) => (
+        <Link to={"/photo/" + rec.id}>{khavas}</Link>
       ),
     },
     {
