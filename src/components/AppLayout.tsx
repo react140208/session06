@@ -10,6 +10,7 @@ import SelectColor from "./SelectColor";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { reset } from "../pages/Counter/Counter.slice";
+import { logout } from "../pages/Auth/Auth.slice";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -77,6 +78,7 @@ const AppLayout: React.FC = () => {
             <Badge count={counter} />
             <Button onClick={() => dispatch(reset())}>Reset</Button>
             Hi <span>{auth.email}</span>
+            <Button onClick={() => dispatch(logout())}>Logout</Button>
           </Space>
         </Header>
         <Content style={{ margin: "0 16px" }}>
