@@ -28,7 +28,7 @@ const taskListSlice = createSlice({
     },
     toggle: (state, action: PayloadAction<number>) => {
       const task = state.taskList.find((x) => x.id === action.payload);
-      if (task) task.done = !task?.done;
+      if (task) task.done = !task.done;
     },
     remove: (state, action: PayloadAction<number>) => {
       state.taskList = state.taskList.filter((x) => x.id !== action.payload);

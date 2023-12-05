@@ -1,8 +1,6 @@
 //Snippet
 //rfc
-import { useState, useCallback } from "react";
 import TaskInput from "../TaskList/TaskInput";
-import { Task } from "../TaskList/Task";
 import TaskItem from "../TaskList/TaskItem";
 import MetaHeader from "../MetaHeader";
 import { useAppSelector } from "../../redux/hooks";

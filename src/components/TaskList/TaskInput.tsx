@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { useAppDispatch } from "../../redux/hooks";
 import { add } from "./Task.slice";
 
 // TODO: 📝 Joda kardan taskInput
 
-export default function TaskInput() {
+function TaskInput() {
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const dispatch = useAppDispatch();
   const addTask = () => {
@@ -22,3 +22,5 @@ export default function TaskInput() {
     </>
   );
 }
+
+export default memo(TaskInput);
