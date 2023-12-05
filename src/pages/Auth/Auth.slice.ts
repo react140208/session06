@@ -8,9 +8,11 @@ interface AuthStore {
   loading: boolean;
 }
 
+const token = localStorage.getItem("token") || "";
+const email = localStorage.getItem("email") || "";
 const initialState: AuthStore = {
-  token: "", //TODO:
-  email: "",
+  token: token,
+  email: email,
   loading: false,
 };
 
@@ -37,6 +39,8 @@ const authSlice = createSlice({
       state.loading = false;
       state.token = action.payload.token;
       state.email = action.payload.email;
+      localStorage.setItem("token", action.payload.token);
+      localStorage.setItem("email", action.payload.email);
     });
     builder.addCase(loginAction.rejected, (state) => {
       state.loading = false;

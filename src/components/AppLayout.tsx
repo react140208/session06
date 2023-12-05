@@ -42,7 +42,7 @@ const items: MenuItem[] = [
 const AppLayout: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
   const counter = useAppSelector((s) => s.counter.value);
-  const token = useAppSelector((s) => s.auth.token);
+  const auth = useAppSelector((s) => s.auth);
   const dispatch = useAppDispatch();
   const {
     token: { colorBgContainer },
@@ -51,8 +51,8 @@ const AppLayout: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!token) navigate("/auth/login");
-  }, [navigate, token]);
+    if (!auth.token) navigate("/auth/login");
+  }, [navigate, auth.token]);
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -76,6 +76,7 @@ const AppLayout: React.FC = () => {
             <SelectColor></SelectColor>
             <Badge count={counter} />
             <Button onClick={() => dispatch(reset())}>Reset</Button>
+            Hi <span>{auth.email}</span>
           </Space>
         </Header>
         <Content style={{ margin: "0 16px" }}>
