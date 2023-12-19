@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { LoginForm } from "./Login";
-import axios from "axios";
 import { appApi } from "../../core/appApi";
 import { RegisterForm } from "./Register";
 
