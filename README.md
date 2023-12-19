@@ -1,4 +1,4 @@
-# Session 05
+# Session 06
 
 folder asli -> npm i
 folder api  -> npm i
