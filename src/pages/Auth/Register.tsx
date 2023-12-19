@@ -54,6 +54,9 @@ export default function Register() {
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
+          <Button type="dashed" onClick={() => navigate("/auth/login")}>
+            Login
+          </Button>
         </Form.Item>
       </Form>
     </>
