@@ -1,15 +1,15 @@
 import { Button, Form, Input } from "antd";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { loginAction } from "./Auth.slice";
+import { registerAction } from "./Auth.slice";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-export type LoginForm = {
+export type RegisterForm = {
   email: string;
   password: string;
 };
 
-export default function Login() {
+export default function Register() {
   const dispatch = useAppDispatch();
   const token = useAppSelector((s) => s.auth.token);
   const navigate = useNavigate();
@@ -17,13 +17,14 @@ export default function Login() {
     if (token) navigate("/");
   }, [navigate, token]);
 
-  const onFinish = (values: LoginForm) => {
-    dispatch(loginAction(values));
+  const onFinish = (values: RegisterForm) => {
+    dispatch(registerAction(values));
     console.log("Success:", values);
   };
 
   return (
     <>
+      <h1>Register</h1>
       <Form
         name="basic"
         labelCol={{ span: 8 }}
@@ -33,7 +34,7 @@ export default function Login() {
         onFinish={onFinish}
         autoComplete="off"
       >
-        <Form.Item<LoginForm>
+        <Form.Item<RegisterForm>
           label="Email"
           name="email"
           rules={[{ required: true, message: "Please input your username!" }]}
@@ -41,7 +42,7 @@ export default function Login() {
           <Input type="email" />
         </Form.Item>
 
-        <Form.Item<LoginForm>
+        <Form.Item<RegisterForm>
           label="Password"
           name="password"
           rules={[{ required: true, message: "Please input your password!" }]}
@@ -52,10 +53,6 @@ export default function Login() {
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit">
             Submit
-          </Button>
-
-          <Button type="dashed" onClick={() => navigate("/auth/register")}>
-            Signup
           </Button>
         </Form.Item>
       </Form>

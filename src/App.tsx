@@ -15,6 +15,7 @@ const TaskListZustand = lazy(() => import("./components/TaskListZ/TaskList"));
 const CounterIndex = lazy(() => import("./pages/Counter/CounterIndex"));
 const CounterZustand = lazy(() => import("./pages/Counter/CounterZustand"));
 const Login = lazy(() => import("./pages/Auth/Login"));
+const Register = lazy(() => import("./pages/Auth/Register"));
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import AuthLayout from "./components/AuthLayout";
@@ -103,6 +104,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback="...">
             <Login></Login>
+          </Suspense>
+        ),
+      },
+      {
+        path: "register",
+        element: (
+          <Suspense fallback="...">
+            <Register></Register>
           </Suspense>
         ),
       },

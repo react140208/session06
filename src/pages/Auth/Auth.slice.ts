@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { LoginForm } from "./Login";
 import axios from "axios";
 import { appApi } from "../../core/appApi";
+import { RegisterForm } from "./Register";
 
 interface AuthStore {
   token: string;
@@ -22,6 +23,14 @@ export const loginAction = createAsyncThunk(
   async (loginForm: LoginForm) => {
     const resp = await appApi.post("auth/login", loginForm);
     return { token: resp.data.token, email: loginForm.email };
+  }
+);
+
+export const registerAction = createAsyncThunk(
+  "auth/register",
+  async (form: RegisterForm) => {
+    const resp = await appApi.post("auth/register", form);
+    return { token: resp.data.token, email: form.email };
   }
 );
 
@@ -48,6 +57,22 @@ const authSlice = createSlice({
       localStorage.setItem("email", action.payload.email);
     });
     builder.addCase(loginAction.rejected, (state) => {
+      state.loading = false;
+      state.token = "";
+      state.email = "";
+    });
+
+    builder.addCase(registerAction.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(registerAction.fulfilled, (state, action) => {
+      state.loading = false;
+      state.token = action.payload.token;
+      state.email = action.payload.email;
+      localStorage.setItem("token", action.payload.token);
+      localStorage.setItem("email", action.payload.email);
+    });
+    builder.addCase(registerAction.rejected, (state) => {
       state.loading = false;
       state.token = "";
       state.email = "";
