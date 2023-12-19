@@ -2,9 +2,10 @@ import axios from "axios";
 // import { store } from "../redux/store";
 import { notification } from "antd";
 
+console.log(import.meta.env.VITE_BASE_URL);
 export const appApi = axios.create({
   // baseURL: "http://mysite.com",
-  baseURL: import.meta.env.BASE_URL,
+  baseURL: import.meta.env.VITE_BASE_URL,
 });
 
 appApi.interceptors.request.use(async (config) => {
