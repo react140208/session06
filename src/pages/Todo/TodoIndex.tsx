@@ -49,6 +49,7 @@ export default function TodoIndex() {
             }}
           />
           <Table
+            rowKey={"id"}
             columns={columns}
             dataSource={data}
             loading={loading}
