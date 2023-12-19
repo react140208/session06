@@ -3,7 +3,8 @@ import axios from "axios";
 import { notification } from "antd";
 
 export const appApi = axios.create({
-  baseURL: "http://localhost:3010",
+  // baseURL: "http://mysite.com",
+  baseURL: import.meta.env.BASE_URL,
 });
 
 appApi.interceptors.request.use(async (config) => {
