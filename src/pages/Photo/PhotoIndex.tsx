@@ -1,7 +1,7 @@
 import { Pagination, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
-import { useFetchData } from "../../hooks/useFetchData";
-import MetaHeader from "../../components/MetaHeader";
+import { useFetchData } from "@/hooks/useFetchData";
+import MetaHeader from "@/components/MetaHeader";
 import { Link } from "react-router-dom";
 
 interface Photo {
