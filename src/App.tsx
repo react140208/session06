@@ -18,6 +18,7 @@ const Login = lazy(() => import("./pages/Auth/Login"));
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import AuthLayout from "./components/AuthLayout";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -53,7 +54,9 @@ const router = createBrowserRouter([
         path: "photo",
         element: (
           <Suspense>
-            <PhotoIndex></PhotoIndex>
+            <ProtectedRoute>
+              <PhotoIndex></PhotoIndex>
+            </ProtectedRoute>
           </Suspense>
         ),
       },
